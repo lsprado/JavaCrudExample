@@ -7,6 +7,7 @@
 <title>Hello Word!</title>
 </head>
 <body>
-	<h2>Hello Word!</h2>
+	<h2>Hello Word 2!</h2>
+	<a href="StudentController.do?acao=listar">Student</a>
 </body>
 </html>

@@ -7,14 +7,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.leandroprado.examplecrud.entidade.Usuario;
+import br.com.leandroprado.examplecrud.entidade.Student;
 import br.com.leandroprado.examplecrud.jdbc.ConexaoFactory;
 
-public class UsuarioDAO {
+public class StudentDAO {
 
 	private Connection conn = ConexaoFactory.getConnection();
 	
-	public void salvar(Usuario usuario) {
+	public void salvar(Student usuario) {
 
 		if (usuario.getId() > 0) {
 			alterar(usuario);
@@ -23,7 +23,7 @@ public class UsuarioDAO {
 		}
 	}
 	
-	public void cadastrar(Usuario u) {
+	public void cadastrar(Student u) {
 		// TODO Auto-generated method stub
 		String sql = "INSERT INTO tbl_student (LastName, FirstMidName, EnrollmentDate) VALUES (?, ?, ?)";
 		
@@ -43,7 +43,7 @@ public class UsuarioDAO {
 		}
 	}
 	
-	public void alterar(Usuario u) {
+	public void alterar(Student u) {
 		// TODO Auto-generated method stub
 		String sql = "UPDATE [tbl_student] SET [LastName] = ? , [FirstMidName] = ? , [EnrollmentDate] = ? WHERE ID = ?";
 		
@@ -64,7 +64,7 @@ public class UsuarioDAO {
 		}
 	}
 	
-	public void deletar(Usuario u) {
+	public void deletar(Student u) {
 		// TODO Auto-generated method stub
 		String sql = "DELETE FROM [tbl_student] WHERE ID = ?";
 		
@@ -80,7 +80,7 @@ public class UsuarioDAO {
 		}
 	}
 
-	public Usuario buscarPorId(Integer id) {
+	public Student buscarPorId(Integer id) {
 
 		String sql = "SELECT * FROM tbl_student WHERE ID = ?";
 
@@ -93,7 +93,7 @@ public class UsuarioDAO {
 			// Posicionando o cursor no primeiro registro
 			if (resultado.next()) {
 
-				Usuario usuario = new Usuario();
+				Student usuario = new Student();
 				usuario.setId(resultado.getInt("ID"));
 				usuario.setLastName(resultado.getString("LastName"));
 				usuario.setFirstName(resultado.getString("FirstMidName"));
@@ -109,10 +109,10 @@ public class UsuarioDAO {
 		return null;
 	}
 	
-	public List<Usuario> buscarTodos() {
+	public List<Student> buscarTodos() {
 
-		String sql = "SELECT * FROM tbl_student";
-		List<Usuario> listaUsuario = new ArrayList<Usuario>();
+		String sql = "SELECT * FROM tbl_student ORDER BY Id";
+		List<Student> listaUsuario = new ArrayList<Student>();
 
 		try (PreparedStatement preparador = conn.prepareStatement(sql)) {
 
@@ -121,7 +121,7 @@ public class UsuarioDAO {
 			// Posicionando o cursor no primeiro registro
 			while (resultado.next()) {
 
-				Usuario usuario = new Usuario();
+				Student usuario = new Student();
 				usuario.setId(resultado.getInt("ID"));
 				usuario.setLastName(resultado.getString("LastName"));
 				usuario.setFirstName(resultado.getString("FirstMidName"));

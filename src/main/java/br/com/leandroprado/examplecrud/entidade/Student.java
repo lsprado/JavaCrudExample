@@ -2,7 +2,7 @@ package br.com.leandroprado.examplecrud.entidade;
 
 import java.util.Date;
 
-public class Usuario {
+public class Student {
 	private int id;
 	private String lastName;
 	private String firstName;

@@ -44,7 +44,9 @@ function confirmaExclusao (id){
 			<td><%=s.getId() %></td>
 			<td><%=s.getLastName() %></td>
 			<td><%=s.getFirstName() %></td>
-			<td><%=s.getEnrollmateDate() %></td>
+			
+			<%java.text.DateFormat df = new java.text.SimpleDateFormat("dd/MM/yyyy"); %>
+			<td><input type="text" name="EnrollmentDate"  value="<%=df.format(s.getEnrollmateDate())%>" /></td>
 			<td>
 				<a href="javascript:confirmaExclusao(<%=s.getId()%>)">Delete</a> |
 				<a href="StudentController.do?acao=alterar&id=<%=s.getId()%>">Edit</a>

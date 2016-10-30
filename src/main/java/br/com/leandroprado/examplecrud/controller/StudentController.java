@@ -1,6 +1,8 @@
 package br.com.leandroprado.examplecrud.controller;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -104,7 +106,14 @@ public class StudentController extends HttpServlet {
 
 		s.setLastName(lastName);
 		s.setFirstName(firstName);
-		s.setEnrollmateDate(new Date(enrollmentDate));
+		
+		try {
+			Date date = new SimpleDateFormat("dd/MM/yyyy").parse(enrollmentDate);
+			s.setEnrollmateDate(date);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		StudentDAO sDAO = new StudentDAO();
 		sDAO.salvar(s);

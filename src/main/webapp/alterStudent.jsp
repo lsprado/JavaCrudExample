@@ -1,4 +1,6 @@
 <%@ page import="java.util.List"%>
+<%@ page import="java.text.SimpleDateFormat"%>
+<%@ page import="java.util.Date"%>
 <%@ page import="br.com.leandroprado.examplecrud.entidade.Student"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -32,7 +34,9 @@
 		</tr>
 		<tr>
 			<td>Enrollment Date</td>
-			<td><input type="text" name="EnrollmentDate"  value="<%=s.getEnrollmateDate() %>" /></td>
+			<%java.text.DateFormat df = new java.text.SimpleDateFormat("dd/MM/yyyy"); %>
+		
+			<td><input type="text" name="EnrollmentDate"  value="<%=df.format(s.getEnrollmateDate())%>" /></td>
 		</tr>
 		<tr>
 			<td></td>
